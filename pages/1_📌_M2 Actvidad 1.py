@@ -8,16 +8,13 @@ st.set_page_config(
 
 st.title("Momento 2 - Actividad 1")
 
-st.header("Descripción de la actividad")
+
 st.markdown("""
-Esta actividad es una introducción práctica a Python y a las estructuras de datos básicas.
-En ella, exploraremos los conceptos fundamentales de Python y aprenderemos a utilizar variables,
-tipos de datos, operadores, y las estructuras de datos más utilizadas como listas, tuplas,
-diccionarios y conjuntos.
+
 """)
 
 st.header("Actividad #1 - Creación de DataFrames")
-
+st.subheader("Descripción de la actividad")
 st.markdown("""
 En esta actividad realizaré 2 Dataframes, uno de un diccionario y otro de una lista de diccionarios.
 El primer DataFrame contendrá información sobre libros, incluyendo el título, autor, año de publicación y género, sobre el segundo mostrará información sobre ciudades, incluyendo el nombre, población y país.
