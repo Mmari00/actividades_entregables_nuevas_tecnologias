@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import io
+import csv
 # Configuración de la página
 st.set_page_config(   
     page_icon="📌",
@@ -24,7 +25,7 @@ st.markdown("""
 """)
 #Aquí es donde se carga al data y se muestra
 st.subheader("Dataset.")
-dataframe_estudiantes_colombia = pd.read_csv('static\datasets\estudiantes_colombia.csv')
+dataframe_estudiantes_colombia = pd.read_csv('static/datasets/estudiantes_colombia.csv')
 st.dataframe(dataframe_estudiantes_colombia)
 
 #Acá solo se pide que muestre las primeras 5 filas
