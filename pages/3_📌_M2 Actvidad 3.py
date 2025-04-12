@@ -27,3 +27,4 @@ st.markdown("""
 
 st.header("Solución")
 
+st.markdown('[Abir cuaderno de Google Colab](https://colab.research.google.com/drive/1EV14Eqbf4VS3c2hjkgIk7iejqwIiQGVA?usp=sharing)')
