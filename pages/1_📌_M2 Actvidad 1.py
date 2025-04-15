@@ -4,11 +4,11 @@ import streamlit as st
 import pandas as pd
 import sqlite3 
 import numpy as np
-# import firebase_admin
-# from firebase_admin import credentials
-# from firebase_admin import firestore
-# from pymongo import MongoClient
-# from dotenv import load_dotenv
+import firebase_admin
+from firebase_admin import credentials
+from firebase_admin import firestore
+from pymongo import MongoClient
+from dotenv import load_dotenv
 
 st.set_page_config(   
     page_icon="📌",
@@ -174,11 +174,11 @@ st.dataframe(dataframe_numpy)
 
 
 
-# load_dotenv()
+load_dotenv()
 type = os.environ.get("TYPE")
 project_id = os.environ.get("PROJECT_ID")
 private_key_id = os.environ.get("PRIVATE_KEY_ID")
-private_key = os.environ.get("PRIVATE_KEY").replace('\\n', '\n') # Reemplazar los saltos de línea escapados
+private_key = os.environ.get("PRIVATE_KEY").replace('\\n', '\n')
 client_email = os.environ.get("CLIENT_EMAIL")
 client_id = os.environ.get("CLIENT_ID")
 auth_uri = os.environ.get("AUTH_URI")
@@ -189,30 +189,30 @@ universe_domain = os.environ.get("UNIVERSE_DOMAIN")
 
 
 st.subheader("DataFrame de Firebase: ")
-# if not firebase_admin._apps:
-#     cred = credentials.Certificate({
-#         "type": type,
-#         "project_id": project_id,
-#         "private_key_id": private_key_id,
-#         "private_key": private_key,
-#         "client_email": client_email,
-#         "client_id": client_id,
-#         "auth_uri": auth_uri,
-#         "token_uri": token_uri,
-#         "auth_provider_x509_cert_url": auth_provider_x509_cert_url,
-#         "client_x509_cert_url": client_x509_cert_url,
-#         "universe_domain": universe_domain,
-#     })
-#     firebase_admin.initialize_app(cred)
+if not firebase_admin._apps:
+    cred = credentials.Certificate({
+        "type": type,
+        "project_id": project_id,
+        "private_key_id": private_key_id,
+        "private_key": private_key,
+        "client_email": client_email,
+        "client_id": client_id,
+        "auth_uri": auth_uri,
+        "token_uri": token_uri,
+        "auth_provider_x509_cert_url": auth_provider_x509_cert_url,
+        "client_x509_cert_url": client_x509_cert_url,
+        "universe_domain": universe_domain,
+    })
+    firebase_admin.initialize_app(cred)
 
-# db = firestore.client()
-# coleccion = 'usuarios'
-# documentos = db.collection(coleccion).stream()
-# data = []
-# for doc in documentos:
-#     data.append(doc.to_dict())
-# dataframe_firebase = pd.DataFrame(data)
-# st.dataframe(dataframe_firebase)
+db = firestore.client()
+coleccion = 'usuarios'
+documentos = db.collection(coleccion).stream()
+data = []
+for doc in documentos:
+    data.append(doc.to_dict())
+dataframe_firebase = pd.DataFrame(data)
+st.dataframe(dataframe_firebase)
 
 
 
@@ -224,29 +224,29 @@ mongo_url = "mongodb://localhost:27017/"
 nombre_db = "proyecto_mongodb"
 colleccion = "usuarios"
 
-# @st.cache_resource
-# def iniciar_coneccion_mongo():
-#     return MongoClient(mongo_url)
+@st.cache_resource
+def iniciar_coneccion_mongo():
+    return MongoClient(mongo_url)
 
-# servidor_mongo = iniciar_coneccion_mongo()
-# db_mongo = servidor_mongo[nombre_db]
-# coleccion_mongo = db_mongo[colleccion]  
+servidor_mongo = iniciar_coneccion_mongo()
+db_mongo = servidor_mongo[nombre_db]
+coleccion_mongo = db_mongo[colleccion]  
 
-# if coleccion_mongo.count_documents({}) == 0:
-#     coleccion_mongo_insertar_datos = ([
-#         {"Nombre": "Elena", "Ciudad": "Bogotá"},
-#         {"Nombre": "Martha", "Ciudad": "Medellín"},
-#         {"Nombre": "John", "Ciudad": "Cali"},
-#         {"Nombre": "María", "Ciudad": "Barranquilla"}
-#     ])
+if coleccion_mongo.count_documents({}) == 0:
+    coleccion_mongo_insertar_datos = ([
+        {"Nombre": "Elena", "Ciudad": "Bogotá"},
+        {"Nombre": "Martha", "Ciudad": "Medellín"},
+        {"Nombre": "John", "Ciudad": "Cali"},
+        {"Nombre": "María", "Ciudad": "Barranquilla"}
+    ])
     
 
 
-# datos_mongo = list(coleccion_mongo.find())  
+datos_mongo = list(coleccion_mongo.find())  
 
 
-# dataframe_mongo = pd.DataFrame(datos_mongo)
+dataframe_mongo = pd.DataFrame(datos_mongo)
 
 
 st.subheader("Datos desde MongoDB")
-# st.dataframe(dataframe_mongo)
+st.dataframe(dataframe_mongo)
