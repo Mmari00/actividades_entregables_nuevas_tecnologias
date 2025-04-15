@@ -5,10 +5,10 @@ import pandas as pd
 import sqlite3 
 import numpy as np
 import firebase_admin
-from firebase_admin import credentials
-from firebase_admin import firestore
-from pymongo import MongoClient
-from dotenv import load_dotenv
+# from firebase_admin import credentials
+# from firebase_admin import firestore
+# from pymongo import MongoClient
+# from dotenv import load_dotenv
 
 st.set_page_config(   
     page_icon="📌",
