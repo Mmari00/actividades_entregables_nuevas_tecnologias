@@ -104,7 +104,7 @@ dataframe_csv = pd.read_csv(archivo_csv)
 st.dataframe(dataframe_csv)
 
 
-st.subheader("DataFrame de Excel:")
+st.subheader("DataFrame de Excel: ")
 archivo_excel = 'data.xlsx.xlsx'
 dataframe_excel = pd.read_excel(archivo_excel)
 st.dataframe(dataframe_excel)
